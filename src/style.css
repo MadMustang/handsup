@@ -1,15 +1,91 @@
 :root {
   color-scheme: light dark;
   font-family: system-ui, sans-serif;
+  --accent: #6d5dfc;
+  --line: #8886;
 }
 
 body {
   margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
   display: grid;
   place-items: center;
   min-height: 100vh;
 }
 
 main {
-  width: min(32rem, 100% - 2rem);
+  width: min(32rem, 100%);
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  margin-block: 1.5rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--line);
+}
+
+button {
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Result bar = gradient filled to --pct, set per option in poll.ts */
+.options button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  color: inherit;
+  border-color: var(--line);
+  background: linear-gradient(to right, #6d5dfc55 var(--pct), transparent var(--pct));
+}
+
+.options button[aria-pressed='true'] {
+  outline: 2px solid var(--accent);
+}
+
+.host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.meta {
+  opacity: 0.75;
+}
+
+.closed {
+  font-weight: 600;
+}
+
+.error {
+  color: #e5484d;
 }
